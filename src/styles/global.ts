@@ -21,6 +21,10 @@ a, button {
     cursor: pointer;
 }
 
+button {
+    border: 0;
+}
+
 button:disabled {
     cursor: not-allowed;
 }
