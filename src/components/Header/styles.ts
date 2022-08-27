@@ -20,11 +20,16 @@ export const LocationButton = styled.button`
   color: ${(props) => props.theme['purple-900']};
   font-size: 0.875rem;
   padding: 0 0.5rem;
+  transition: opacity 0.2s;
 
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+
+  &:hover {
+    opacity: 0.9;
+  }
 
   svg {
     color: ${(props) => props.theme['purple-500']};
