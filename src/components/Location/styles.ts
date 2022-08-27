@@ -16,7 +16,7 @@ export const LocationContainer = styled.div`
   div {
     width: 100%;
     max-width: 32rem;
-    max-height: 32rem;
+    max-height: 33rem;
     border-radius: 6px;
     padding: 2rem;
 
@@ -77,8 +77,8 @@ export const LocationContainer = styled.div`
 `
 export const LocationList = styled.ul`
   width: 100%;
-  max-height: 17rem;
-  margin: 1rem 0;
+  height: 17rem;
+  margin: 1rem 0 0;
   list-style: none;
   overflow: hidden;
   overflow-y: scroll;
@@ -89,9 +89,67 @@ export const LocationList = styled.ul`
     line-height: 1.4;
     padding: 0.75rem 0.5rem;
     text-align: center;
+    position: relative;
+    transition: all 0.2s;
+    cursor: pointer;
 
     & + li {
       border-top: 1px solid ${(props) => props.theme['gray-400']};
     }
+
+    &:hover,
+    &:focus {
+      color: ${(props) => props.theme['purple-500']};
+
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        background: ${(props) => props.theme['purple-500']};
+
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+      }
+    }
+  }
+`
+
+export const ScrollIconContainer = styled.span`
+  background: transparent;
+  margin: 0.5rem 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    color: ${(props) => props.theme['gray-500']};
+  }
+`
+export const CloseButton = styled.button`
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 6px;
+  background: transparent;
+  transition: background 0.2s;
+  float: right;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+
+  &:hover,
+  &:focus {
+    background: ${(props) => props.theme['gray-300']};
+  }
+
+  svg {
+    color: ${(props) => props.theme['gray-600']} !important;
   }
 `

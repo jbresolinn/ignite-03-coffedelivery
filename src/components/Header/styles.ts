@@ -13,12 +13,13 @@ export const HeaderContainer = styled.header`
   }
 `
 export const LocationButton = styled.button`
-  width: 8.9375rem;
+  width: 100%;
   height: 2.375rem;
   border-radius: 6px;
   background: ${(props) => props.theme['purple-100']};
   color: ${(props) => props.theme['purple-900']};
   font-size: 0.875rem;
+  padding: 0 0.5rem;
 
   display: flex;
   align-items: center;
