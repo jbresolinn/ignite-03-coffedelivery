@@ -18,4 +18,6 @@ export const defaultTheme = {
   'yellow-100': '#f1e9c9',
   'yellow-500': '#dbac2c',
   'yellow-900': '#c47f17',
+
+  'modal-opacity': 'rgba(0,0,0,.25)',
 }
