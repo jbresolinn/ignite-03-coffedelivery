@@ -28,6 +28,10 @@ export const LocationButton = styled.button`
 
   svg {
     color: ${(props) => props.theme['purple-500']};
+
+    @media ${(props) => props.theme['mobile-bp']} {
+      width: 16px;
+    }
   }
 `
 
@@ -45,6 +49,10 @@ export const CartButton = styled.button`
 
   svg {
     color: ${(props) => props.theme['yellow-900']};
+
+    @media ${(props) => props.theme['mobile-bp']} {
+      width: 16px;
+    }
   }
 
   &:hover {
@@ -65,7 +73,7 @@ export const CartButton = styled.button`
 
     background: ${(props) => props.theme['yellow-900']};
     color: ${(props) => props.theme.white};
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: bold;
   }
 `

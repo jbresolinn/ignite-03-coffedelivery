@@ -7,12 +7,16 @@ export const HomeContainer = styled.main``
 
 export const Banner = styled.div`
   height: ${bannerHeight};
-  clear: both;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 3.5rem;
+
+  @media ${(props) => props.theme['mobile-bp']} {
+    flex-direction: column;
+    height: initial;
+  }
 
   &::before {
     content: '';
@@ -28,16 +32,31 @@ export const Banner = styled.div`
     background-repeat: no-repeat;
     z-index: -1;
   }
+
+  img {
+    @media ${(props) => props.theme['mobile-bp']} {
+      display: none;
+    }
+  }
 `
 
 export const Heading = styled.div`
   display: flex;
   flex-direction: column;
 
+  @media ${(props) => props.theme['mobile-bp']} {
+    align-items: center;
+  }
+
   h1 {
     font: 800 3rem 'Baloo 2', sans-serif;
     color: ${(props) => props.theme['gray-900']};
     line-height: 1.3;
+
+    @media ${(props) => props.theme['mobile-bp']} {
+      text-align: center;
+      max-width: 32rem;
+    }
   }
 
   p {

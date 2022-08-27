@@ -7,6 +7,12 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 }
 
+html {
+    @media ${(props) => props.theme['mobile-bp']} {
+        font-size: 75%;
+    }
+}
+
 body {
     background: ${(props) => props.theme['gray-100']};
     color: ${(props) => props.theme['gray-800']};
