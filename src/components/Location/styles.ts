@@ -16,7 +16,7 @@ export const LocationContainer = styled.div`
   div {
     width: 100%;
     max-width: 32rem;
-    max-height: 33rem;
+    max-height: 35rem;
     border-radius: 6px;
     padding: 2rem;
 
