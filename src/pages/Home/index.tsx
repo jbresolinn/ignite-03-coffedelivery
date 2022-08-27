@@ -1,47 +1,55 @@
-import { Banner, Heading, HomeContainer, Tag } from './styles'
-import bannerImg from '../../assets/banner.png'
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import { HomeBanner } from '../../components/HomeBanner'
+import {
+  ActionsContainer,
+  CoffeCategoriesList,
+  CoffeDetailsContainer,
+  CoffeList,
+  CoffeListContainer,
+  HomeContainer,
+} from './styles'
+
+import coffeImg from '../../assets/coffes/expresso-tradicional.png'
+import { ShoppingCart } from 'phosphor-react'
+import { coffes } from '../../utils/coffes'
 
 export function Home() {
   return (
     <HomeContainer>
-      <Banner>
-        <Heading>
-          <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-          <p>
-            Com o Coffe Delivery você recebe seu café onde estiver, a qualquer
-            hora
-          </p>
+      <HomeBanner />
 
-          <ul>
-            <Tag statusColor={'yellow'}>
-              <i>
-                <ShoppingCart size={16} weight="fill" />
-              </i>
-              <span>Compra simples e segura</span>
-            </Tag>
-            <Tag statusColor={'gray'}>
-              <i>
-                <Package size={16} weight="fill" />
-              </i>
-              <span>Embalagem mantém o café intacto</span>
-            </Tag>
-            <Tag statusColor={'yellowLight'}>
-              <i>
-                <Timer size={16} weight="fill" />
-              </i>
-              <span>Entrega rápida e rastreada</span>
-            </Tag>
-            <Tag statusColor={'purple'}>
-              <i>
-                <Coffee size={16} weight="fill" />
-              </i>
-              <span>O café chega fresquinho até você</span>
-            </Tag>
-          </ul>
-        </Heading>
-        <img src={bannerImg} alt="" />
-      </Banner>
+      <CoffeListContainer>
+        <h2>Nossos cafés</h2>
+
+        <CoffeList>
+          {coffes.map((coffe) => {
+            return (
+              <li key={coffe.id}>
+                <img src={coffeImg} alt="" />
+
+                <CoffeDetailsContainer>
+                  <CoffeCategoriesList>
+                    <span>tradicional</span>
+                    <span>especial</span>
+                  </CoffeCategoriesList>
+
+                  <strong>Expresso Tradicional</strong>
+                  <p>O tradicional café feito com água quente e grãos moídos</p>
+                </CoffeDetailsContainer>
+
+                <ActionsContainer>
+                  <span>9,90</span>
+
+                  <input type="number" min={1} max={10} />
+
+                  <button type="button">
+                    <ShoppingCart size={22} weight="fill" />
+                  </button>
+                </ActionsContainer>
+              </li>
+            )
+          })}
+        </CoffeList>
+      </CoffeListContainer>
     </HomeContainer>
   )
 }

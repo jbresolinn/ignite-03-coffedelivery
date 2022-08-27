@@ -1,114 +1,122 @@
 import styled from 'styled-components'
-import backgroundBanner from '../../assets/banner-background.png'
-
-const bannerHeight = '34rem'
 
 export const HomeContainer = styled.main``
 
-export const Banner = styled.div`
-  height: ${bannerHeight};
+export const CoffeListContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0 0;
+
+  h2 {
+    font: 800 2rem 'Baloo 2', sans-serif;
+    color: ${(props) => props.theme['gray-800']};
+    line-height: 1.3;
+  }
+`
+
+export const CoffeList = styled.ul`
+  list-style: none;
+  margin: 2.125rem 0 0;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3.5rem;
+  flex-wrap: wrap;
+  gap: 40px 32px;
 
-  @media ${(props) => props.theme['mobile-bp']} {
+  li {
+    width: 100%;
+    max-width: 16rem;
+    min-height: 19.375rem;
+    padding: 1.25rem;
+    background: ${(props) => props.theme['gray-200']};
+    border-radius: 6px 36px;
+
+    display: flex;
     flex-direction: column;
-    height: initial;
-  }
+    align-items: center;
+    justify-content: space-between;
 
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: ${bannerHeight};
-
-    background-image: url(${backgroundBanner});
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
-    z-index: -1;
-  }
-
-  img {
-    @media ${(props) => props.theme['mobile-bp']} {
-      display: none;
+    > img {
+      margin-top: -2.5rem;
     }
   }
 `
 
-export const Heading = styled.div`
+export const CoffeDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
-  @media ${(props) => props.theme['mobile-bp']} {
-    align-items: center;
-  }
-
-  h1 {
-    font: 800 3rem 'Baloo 2', sans-serif;
-    color: ${(props) => props.theme['gray-900']};
-    line-height: 1.3;
-
-    @media ${(props) => props.theme['mobile-bp']} {
-      text-align: center;
-      max-width: 32rem;
-    }
+  strong {
+    margin: 1rem 0 0;
+    font: 700 1.25rem 'Baloo 2', sans-serif;
+    color: ${(props) => props.theme['gray-800']};
   }
 
   p {
-    font-size: 1.25rem;
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
     line-height: 1.3;
-    margin: 1rem 0 0;
-  }
-
-  ul {
-    list-style: none;
-    margin: 3.75rem 0 0;
-
-    display: grid;
-    grid-template-columns: 0.75fr 1fr;
-    grid-template-rows: auto;
-    gap: 1.25rem;
+    text-align: center;
+    color: ${(props) => props.theme['gray-600']};
   }
 `
 
-const STATUS_COLORS = {
-  yellow: 'yellow-900',
-  yellowLight: 'yellow-500',
-  gray: 'gray-700',
-  purple: 'purple-500',
-} as const
-
-interface StatusProps {
-  statusColor: keyof typeof STATUS_COLORS
-}
-
-export const Tag = styled.li<StatusProps>`
+export const CoffeCategoriesList = styled.ul`
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.25rem;
 
-  i {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background: ${(props) => props.theme[STATUS_COLORS[props.statusColor]]};
+  span {
+    background: ${(props) => props.theme['yellow-100']};
+
+    font: 700 0.625rem 'Roboto', sans-serif;
+    line-height: 1.3;
+    padding: 0.25rem 0.5rem;
+    color: ${(props) => props.theme['yellow-900']};
+    text-transform: uppercase;
+    border-radius: 1rem;
+  }
+`
+
+export const ActionsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+
+  span {
+    flex: 1;
+    font: 800 1.5rem 'Baloo 2', sans-serif;
+    color: ${(props) => props.theme['gray-700']};
+
+    &:before {
+      content: 'R$';
+      display: inline-block;
+      font: 400 0.875rem 'Roboto', sans-serif;
+      margin: 0 0.25rem 0 0;
+    }
+  }
+
+  button {
+    width: 2.375rem;
+    height: 2.375rem;
+    border-radius: 6px;
+    border: 0;
+    background: ${(props) => props.theme['purple-900']};
+    transition: opacity 0.2s;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    &:hover {
+      opacity: 0.9;
+    }
+
     svg {
       color: ${(props) => props.theme.white};
     }
-  }
-
-  span {
-    color: ${(props) => props.theme['gray-700']};
-    flex: 1;
   }
 `
