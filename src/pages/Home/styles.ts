@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
-  margin-bottom: 2rem;
+  margin-bottom: 9.8125rem;
 `
 export const CoffeListContainer = styled.div`
   display: flex;

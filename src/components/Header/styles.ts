@@ -7,6 +7,7 @@ export const HeaderContainer = styled.header`
 
   position: sticky;
   top: 0;
+  z-index: 2;
 
   background: ${(props) => props.theme.white};
   padding: 2rem calc((100vw - 74rem) / 2);
