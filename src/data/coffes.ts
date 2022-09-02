@@ -70,7 +70,7 @@ export const coffes: Coffe[] = [
   },
   {
     id: uuidv4(),
-    name: 'Machiato',
+    name: 'Macchiato',
     categories: ['Tradicional', 'Com Leite'],
     description:
       'Café expresso misturado com um pouco de leite quente e espuma',
