@@ -1,13 +1,14 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
+import { produce } from 'immer'
 import { Coffe } from '../data/coffes'
 
-interface CartCoffe extends Coffe {
+interface CartProduct extends Coffe {
   quantity: number
 }
 
 interface CartContextType {
   totalAmount: number
-  addToCart: (coffe: CartCoffe) => void
+  addToCart: (coffe: CartProduct) => void
 }
 
 interface CartContextProviderProps {
@@ -17,21 +18,31 @@ interface CartContextProviderProps {
 export const CartContext = createContext({} as CartContextType)
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cartProducts, setCartProducts] = useState<Coffe[]>([])
+  const [cartProducts, setCartProducts] = useState<CartProduct[]>([])
 
   const totalAmount = cartProducts.length ?? 0
 
-  function addToCart(coffe: CartCoffe) {
-    const coffeAlreadyExists = cartProducts.find(
+  function addToCart(coffe: CartProduct) {
+    const productAlreadyExistsIndex = cartProducts.findIndex(
       (product) => product.id === coffe.id,
     )
 
-    if (coffeAlreadyExists) {
-      // TODO: add cart to already exists products
-    } else {
-      setCartProducts((state) => [...state, coffe])
-    }
+    console.log('productAlreadyExistsIndex:', productAlreadyExistsIndex)
+
+    const newCart = produce(cartProducts, (draft) => {
+      if (productAlreadyExistsIndex >= 0) {
+        draft[productAlreadyExistsIndex].quantity = coffe.quantity
+      } else {
+        draft.push(coffe)
+      }
+    })
+
+    setCartProducts(newCart)
   }
+
+  useEffect(() => {
+    console.log(cartProducts)
+  }, [cartProducts])
 
   return (
     <CartContext.Provider value={{ totalAmount, addToCart }}>
