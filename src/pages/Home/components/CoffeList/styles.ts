@@ -105,7 +105,7 @@ export const ActionsContainer = styled.div`
     }
   }
 
-  button {
+  > button {
     width: 2.375rem;
     height: 2.375rem;
     border-radius: 6px;
@@ -127,6 +127,47 @@ export const ActionsContainer = styled.div`
       @media ${(props) => props.theme['mobile-bp']} {
         width: 1.5rem;
       }
+    }
+  }
+`
+
+export const NumberInput = styled.fieldset`
+  background: ${(props) => props.theme['gray-400']};
+  width: 4.5rem;
+  height: 2.375rem;
+  border-radius: 6px;
+  border: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > button {
+    border: 0;
+    background: transparent;
+    padding: 0 0.25rem;
+
+    svg {
+      color: ${(props) => props.theme['purple-500']};
+    }
+  }
+
+  input[type='number'] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    outline: 0;
+
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: ${(props) => props.theme['gray-900']};
+    line-height: 1.3;
+    text-align: center;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
     }
   }
 `
