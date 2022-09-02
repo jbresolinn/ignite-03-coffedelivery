@@ -1,7 +1,7 @@
 import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 import { BannerContainer, Heading, Tag } from './styles'
 
-import bannerImg from '../../assets/banner.png'
+import bannerImg from '../../../../assets/banner.png'
 
 export function HomeBanner() {
   return (

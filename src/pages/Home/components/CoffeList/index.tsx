@@ -1,5 +1,5 @@
 import { ShoppingCart } from 'phosphor-react'
-import { coffes } from '../../../data/coffes'
+import { coffes } from '../../../../data/coffes'
 
 import {
   ActionsContainer,

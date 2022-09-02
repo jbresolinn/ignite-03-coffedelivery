@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import backgroundBanner from '../../assets/banner-background.png'
+import backgroundBanner from '../../../../assets/banner-background.png'
 
 const bannerHeight = '34rem'
 
@@ -14,6 +14,7 @@ export const BannerContainer = styled.div`
   @media ${(props) => props.theme['mobile-bp']} {
     flex-direction: column;
     height: initial;
+    margin: 1rem 0 0;
   }
 
   &::before {

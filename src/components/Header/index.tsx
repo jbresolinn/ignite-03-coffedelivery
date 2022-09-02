@@ -1,6 +1,11 @@
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
-import { CartButton, HeaderContainer, LocationButton } from './styles'
+import {
+  ActionsContainer,
+  CartButton,
+  HeaderContainer,
+  LocationButton,
+} from './styles'
 import logo from '../../assets/logo.svg'
 import { LocationSearch } from '../Location'
 import { useContext } from 'react'
@@ -26,7 +31,7 @@ export function Header() {
       <HeaderContainer>
         <img src={logo} alt="coffe delivery logo" />
 
-        <div>
+        <ActionsContainer>
           <LocationButton type="button" onClick={handleToggleLocationModal}>
             <MapPin size={22} weight="fill" />
             {currentLocation && formatLocationLabel(currentLocation)}
@@ -36,7 +41,7 @@ export function Header() {
             <ShoppingCart size={22} weight="fill" />
             <small>3</small>
           </CartButton>
-        </div>
+        </ActionsContainer>
       </HeaderContainer>
 
       {locationModalIsOpen && <LocationSearch />}

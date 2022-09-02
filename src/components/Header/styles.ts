@@ -4,14 +4,23 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 0;
 
-  div {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  position: sticky;
+  top: 0;
+
+  background: ${(props) => props.theme.white};
+  padding: 2rem calc((100vw - 74rem) / 2);
+
+  @media ${(props) => props.theme['desktop-small-bp']} {
+    padding: 2rem;
   }
 `
+export const ActionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`
+
 export const LocationButton = styled.button`
   width: 100%;
   height: 2.375rem;
