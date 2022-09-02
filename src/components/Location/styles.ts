@@ -6,6 +6,7 @@ export const LocationContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 2;
 
   background: ${(props) => props.theme['modal-opacity']};
 
