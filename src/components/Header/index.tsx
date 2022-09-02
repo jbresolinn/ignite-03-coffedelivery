@@ -1,4 +1,10 @@
+import { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
+
+import { LocationSearch } from '../Location'
+import { Location, LocationContext } from '../../contexts/LocationContext'
+import { CartContext } from '../../contexts/CartContext'
 
 import {
   ActionsContainer,
@@ -6,11 +12,8 @@ import {
   HeaderContainer,
   LocationButton,
 } from './styles'
+
 import logo from '../../assets/logo.svg'
-import { LocationSearch } from '../Location'
-import { useContext } from 'react'
-import { Location, LocationContext } from '../../contexts/LocationContext'
-import { CartContext } from '../../contexts/CartContext'
 
 export function Header() {
   const { currentLocation, locationModalIsOpen, toggleOpenModal } =
@@ -40,10 +43,12 @@ export function Header() {
             {currentLocation && formatLocationLabel(currentLocation)}
             {!currentLocation && <span>Selecione um local</span>}
           </LocationButton>
-          <CartButton type="button">
-            <ShoppingCart size={22} weight="fill" />
-            <small>{totalAmount}</small>
-          </CartButton>
+          <NavLink to="/cart">
+            <CartButton type="button">
+              <ShoppingCart size={22} weight="fill" />
+              <small>{totalAmount}</small>
+            </CartButton>
+          </NavLink>
         </ActionsContainer>
       </HeaderContainer>
 
