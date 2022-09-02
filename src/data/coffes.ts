@@ -1,6 +1,15 @@
 import { v4 as uuidv4 } from 'uuid'
 
-export const coffes = [
+export interface Coffe {
+  id: string
+  name: string
+  categories: string[]
+  description: string
+  price: number
+  imageUrl: string
+}
+
+export const coffes: Coffe[] = [
   {
     id: uuidv4(),
     name: 'Expresso Tradicional',
