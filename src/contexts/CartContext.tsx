@@ -27,8 +27,6 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
       (product) => product.id === coffe.id,
     )
 
-    console.log('productAlreadyExistsIndex:', productAlreadyExistsIndex)
-
     const newCart = produce(cartProducts, (draft) => {
       if (productAlreadyExistsIndex >= 0) {
         draft[productAlreadyExistsIndex].quantity = coffe.quantity
