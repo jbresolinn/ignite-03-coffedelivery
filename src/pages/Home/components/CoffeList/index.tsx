@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { coffes } from '../../../../data/coffes'
+import { formatPrice } from '../../../../utils/formatPrice'
 
 import {
   ActionsContainer,
@@ -33,7 +34,7 @@ export function CoffeList() {
               </CoffeDetailsContainer>
 
               <ActionsContainer>
-                <span>{coffe.price}</span>
+                <span>{formatPrice(coffe.price)}</span>
 
                 <NumberInput>
                   <button type="button">
