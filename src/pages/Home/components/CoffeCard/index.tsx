@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { CartContext } from '../../../../contexts/CartContext'
 import { Coffe } from '../../../../data/coffes'
 import { formatPrice } from '../../../../utils/formatPrice'
 
@@ -17,12 +18,23 @@ interface CoffeCardProps {
 export function CoffeCard({ coffe }: CoffeCardProps) {
   const [quantity, setQuantity] = useState(1)
 
+  const { addToCart } = useContext(CartContext)
+
   function handleIncrementQuantity() {
     setQuantity((state) => state + 1)
   }
 
   function handleDecrementQuantity() {
     setQuantity((state) => state - 1)
+  }
+
+  function handleAddToCart() {
+    const newCoffe = {
+      ...coffe,
+      quantity,
+    }
+
+    addToCart(newCoffe)
   }
 
   const decrementButtonDisabled = quantity === 1
@@ -66,7 +78,7 @@ export function CoffeCard({ coffe }: CoffeCardProps) {
           </button>
         </NumberInput>
 
-        <button type="button">
+        <button type="button" onClick={handleAddToCart}>
           <ShoppingCart size={22} weight="fill" />
         </button>
       </ActionsContainer>

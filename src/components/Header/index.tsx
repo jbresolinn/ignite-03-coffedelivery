@@ -10,10 +10,13 @@ import logo from '../../assets/logo.svg'
 import { LocationSearch } from '../Location'
 import { useContext } from 'react'
 import { Location, LocationContext } from '../../contexts/LocationContext'
+import { CartContext } from '../../contexts/CartContext'
 
 export function Header() {
   const { currentLocation, locationModalIsOpen, toggleOpenModal } =
     useContext(LocationContext)
+
+  const { totalAmount } = useContext(CartContext)
 
   function formatLocationLabel(location: Location) {
     const formatted =
@@ -39,7 +42,7 @@ export function Header() {
           </LocationButton>
           <CartButton type="button">
             <ShoppingCart size={22} weight="fill" />
-            <small>3</small>
+            <small>{totalAmount}</small>
           </CartButton>
         </ActionsContainer>
       </HeaderContainer>
