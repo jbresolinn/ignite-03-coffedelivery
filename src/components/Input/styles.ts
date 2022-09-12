@@ -10,8 +10,13 @@ export const BaseInput = styled.input`
   font-size: 0.875rem;
   line-height: 1.3;
   color: ${(props) => props.theme['gray-700']};
+  transition: opacity 0.2s;
 
   &::placeholder {
     color: ${(props) => props.theme['gray-600']};
+  }
+
+  &:disabled {
+    opacity: 0.5;
   }
 `

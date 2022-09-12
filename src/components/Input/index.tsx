@@ -1,16 +1,17 @@
-import { InputHTMLAttributes } from 'react'
+/* eslint-disable react/display-name */
+import { forwardRef, InputHTMLAttributes } from 'react'
 import { BaseInput } from './styles'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   maxWidth?: string
 }
 
-export function Input({ maxWidth, ...defaultProps }: InputProps) {
-  return (
-    <BaseInput
-      type={defaultProps.type}
-      placeholder={defaultProps.placeholder}
-      style={{ maxWidth }}
-    />
-  )
-}
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ maxWidth, ...defaultProps }, ref) => {
+    return (
+      <>
+        <BaseInput {...defaultProps} style={{ maxWidth }} ref={ref} />
+      </>
+    )
+  },
+)
