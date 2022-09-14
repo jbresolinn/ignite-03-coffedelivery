@@ -18,10 +18,8 @@ export function Address() {
     updateShippingAddress,
   } = useContext(ShippingAddressContext)
 
-  const { register, watch } = useFormContext()
-  const postalCode = watch('postalCode')
+  const { register } = useFormContext()
 
-  console.log(postalCode)
   const addressFormFieldsIsDisabled = !addressFetchError
 
   function handleGetShippingAddressByPostalCode(postalCode: string) {
@@ -73,6 +71,8 @@ export function Address() {
               id="street"
               value={shippingAddress.street ?? ''}
               disabled={addressFormFieldsIsDisabled}
+              iconValidIsShow={true}
+              isValid={!!shippingAddress.street}
               {...register('street')}
             />
           </fieldset>
@@ -86,6 +86,8 @@ export function Address() {
               min={0}
               disabled={addressFormAdditionalFieldsDisabled}
               value={shippingAddress.number ?? ''}
+              iconValidIsShow={true}
+              isValid={!!shippingAddress.number}
               {...(register('number'),
               {
                 onChange: (e) =>
@@ -99,8 +101,11 @@ export function Address() {
               type="text"
               id="complement"
               placeholder="Complemento"
+              optional={true}
               value={shippingAddress.complement ?? ''}
               disabled={addressFormAdditionalFieldsDisabled}
+              iconValidIsShow={true}
+              isValid={!!shippingAddress.complement}
               {...(register('complement'),
               {
                 onChange: (e) =>
@@ -120,6 +125,8 @@ export function Address() {
               maxWidth="12.5rem"
               value={shippingAddress.district ?? ''}
               disabled={addressFormFieldsIsDisabled}
+              iconValidIsShow={true}
+              isValid={!!shippingAddress.district}
               {...register('district')}
             />
             <Input
@@ -128,14 +135,18 @@ export function Address() {
               placeholder="Cidade"
               value={shippingAddress.city ?? ''}
               disabled={addressFormFieldsIsDisabled}
+              iconValidIsShow={true}
+              isValid={!!shippingAddress.city}
               {...register('city')}
             />
             <Input
               type="text"
               id="state"
               placeholder="UF"
-              maxWidth="3.75rem"
+              maxWidth="6rem"
               value={shippingAddress.state ?? ''}
+              iconValidIsShow={true}
+              isValid={!!shippingAddress.state}
               disabled={addressFormFieldsIsDisabled}
               {...register('state')}
             />

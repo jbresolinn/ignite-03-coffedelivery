@@ -19,6 +19,8 @@ export const defaultTheme = {
   'yellow-500': '#dbac2c',
   'yellow-900': '#c47f17',
 
+  'green-500': '#08bb65',
+
   'modal-opacity': 'rgba(0,0,0,.25)',
 
   'mobile-bp': 'only screen and (max-width: 992px)',
