@@ -14,6 +14,7 @@ interface CartContextType {
   addToCart: (coffe: CartProduct) => void
   updatedQuantityCart: (productId: string, quantity: number) => void
   removeProduct: (productId: string) => void
+  clearCart: () => void
 }
 
 interface CartContextProviderProps {
@@ -76,6 +77,10 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCartProducts(updatedCart)
   }
 
+  function clearCart() {
+    setCartProducts([])
+  }
+
   useEffect(() => {
     console.log(cartProducts)
   }, [cartProducts])
@@ -90,6 +95,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         cartProducts,
         updatedQuantityCart,
         removeProduct,
+        clearCart,
       }}
     >
       {children}

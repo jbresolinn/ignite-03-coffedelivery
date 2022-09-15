@@ -10,13 +10,13 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
-        <OrderContextProvider>
-          <LocationContextProvider>
-            <CartContextProvider>
+        <CartContextProvider>
+          <OrderContextProvider>
+            <LocationContextProvider>
               <Router />
-            </CartContextProvider>
-          </LocationContextProvider>
-        </OrderContextProvider>
+            </LocationContextProvider>
+          </OrderContextProvider>
+        </CartContextProvider>
       </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>

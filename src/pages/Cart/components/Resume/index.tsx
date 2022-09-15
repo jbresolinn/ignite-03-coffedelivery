@@ -51,6 +51,7 @@ export function Resume() {
       shippingAddress,
       payment: selectPayment,
       deliveryTime: '20min - 30min',
+      items: cartProducts,
     }
 
     createOrder(newOrder)
