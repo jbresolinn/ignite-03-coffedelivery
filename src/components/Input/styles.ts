@@ -13,7 +13,7 @@ export const InputContainer = styled.div`
 
   position: relative;
 
-  svg {
+  > svg {
     background: ${(props) => props.theme['green-500']};
     color: ${(props) => props.theme.white};
     padding: 0.2rem;
@@ -50,3 +50,4 @@ export const OptionalText = styled.span`
   font-style: italic;
   color: ${(props) => props.theme['gray-600']};
 `
+export const Loader = styled.div``

@@ -14,6 +14,7 @@ export interface ShippingAddress {
 interface ShippingAddressContextType {
   shippingAddress: ShippingAddress
   addressFetchError: boolean
+  addressLoading: boolean
   getAddressByPostalCode: (postalCode: string) => void
   updateShippingAddress: (shippingAddress: ShippingAddress) => void
 }
@@ -33,8 +34,10 @@ export function ShippingAddressContextProvider({
     {} as ShippingAddress,
   )
   const [addressFetchError, setAddressFetchError] = useState(false)
+  const [addressLoading, setAddressLoading] = useState(false)
 
   function getAddressByPostalCode(postalCode: string) {
+    setAddressLoading(true)
     try {
       fetch(VIA_CEP_API_URL.replace(':postalCode', postalCode))
         .then((response) => response.json())
@@ -48,6 +51,7 @@ export function ShippingAddressContextProvider({
           }
 
           setShippingAddress(newShippingAddress)
+          setAddressLoading(false)
           !!addressFetchError && setAddressFetchError(false)
           return newShippingAddress
         })
@@ -75,6 +79,7 @@ export function ShippingAddressContextProvider({
         shippingAddress,
         addressFetchError,
         updateShippingAddress,
+        addressLoading,
       }}
     >
       {children}

@@ -11,11 +11,13 @@ export function Address() {
     addressFormAdditionalFieldsDisabled,
     setAddressFormAdditionalFieldsDisabled,
   ] = useState(true)
+
   const {
     shippingAddress,
     getAddressByPostalCode,
     addressFetchError,
     updateShippingAddress,
+    addressLoading,
   } = useContext(ShippingAddressContext)
 
   const { register } = useFormContext()
@@ -50,6 +52,7 @@ export function Address() {
               id="postalCode"
               maxWidth="12.5rem"
               maxLength={9}
+              isLoading={addressLoading}
               {...(register('postalCode'),
               {
                 onBlur: (e) =>
