@@ -2,13 +2,16 @@ import { createContext, ReactNode, useEffect, useState } from 'react'
 import { produce } from 'immer'
 import { Coffe } from '../data/coffes'
 
-interface CartProduct extends Coffe {
+export interface CartProduct extends Coffe {
   quantity: number
 }
 
 interface CartContextType {
   totalAmount: number
+  cartProducts: CartProduct[]
   addToCart: (coffe: CartProduct) => void
+  updatedQuantityCart: (productId: string, quantity: number) => void
+  removeProduct: (productId: string) => void
 }
 
 interface CartContextProviderProps {
@@ -38,12 +41,48 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     setCartProducts(newCart)
   }
 
+  function updatedQuantityCart(productId: string, quantity: number) {
+    const productIndex = cartProducts.findIndex(
+      (cartProduct) => cartProduct.id === productId,
+    )
+
+    const updatedCart = produce(cartProducts, (draft) => {
+      if (productIndex >= 0) {
+        draft[productIndex].quantity = quantity
+      }
+    })
+
+    setCartProducts(updatedCart)
+  }
+
+  function removeProduct(productId: string) {
+    const productIndex = cartProducts.findIndex(
+      (cartProduct) => cartProduct.id === productId,
+    )
+
+    const updatedCart = produce(cartProducts, (draft) => {
+      if (productIndex >= 0) {
+        draft.splice(productIndex, 1)
+      }
+    })
+
+    setCartProducts(updatedCart)
+  }
+
   useEffect(() => {
     console.log(cartProducts)
   }, [cartProducts])
 
   return (
-    <CartContext.Provider value={{ totalAmount, addToCart }}>
+    <CartContext.Provider
+      value={{
+        totalAmount,
+        addToCart,
+        cartProducts,
+        updatedQuantityCart,
+        removeProduct,
+      }}
+    >
       {children}
     </CartContext.Provider>
   )

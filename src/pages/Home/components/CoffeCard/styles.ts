@@ -102,10 +102,15 @@ export const NumberInput = styled.fieldset`
 
     svg {
       color: ${(props) => props.theme['purple-500']};
+      transition: color 0.2s;
     }
 
     &:disabled {
       opacity: 0.4;
+    }
+
+    &:not(:disabled):hover svg {
+      color: ${(props) => props.theme['purple-900']};
     }
   }
 

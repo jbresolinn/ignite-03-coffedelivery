@@ -5,9 +5,9 @@ export const AddressContainer = styled.section`
   flex-direction: column;
 
   h2 {
-    font: 800 1.125rem 'Baloo 2', sans-serif;
+    font: bold 1.125rem 'Baloo 2', sans-serif;
     line-height: 1.3;
-    color: ${(props) => props.theme['gray-900']};
+    color: ${(props) => props.theme['gray-800']};
   }
 `
 
