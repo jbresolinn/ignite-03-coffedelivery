@@ -7,6 +7,7 @@ import { Payment } from './components/Payment'
 import { Resume } from './components/Resume'
 import { CartContainer, LeftContainer, RightContainer } from './styles'
 import { FormProvider, useForm } from 'react-hook-form'
+import { PaymentContextProvider } from '../../contexts/PaymentContext'
 
 interface NewAddressFormData {
   postalCode: string
@@ -43,19 +44,22 @@ export function Cart() {
   })
 
   return (
-    <CartContainer>
-      <LeftContainer>
-        <ShippingAddressContextProvider>
-          <FormProvider {...newAddressForm}>
-            <Address />
-          </FormProvider>
-        </ShippingAddressContextProvider>
-        <Payment />
-      </LeftContainer>
+    <ShippingAddressContextProvider>
+      <PaymentContextProvider>
+        <CartContainer>
+          <LeftContainer>
+            <FormProvider {...newAddressForm}>
+              <Address />
+            </FormProvider>
 
-      <RightContainer>
-        <Resume />
-      </RightContainer>
-    </CartContainer>
+            <Payment />
+          </LeftContainer>
+
+          <RightContainer>
+            <Resume />
+          </RightContainer>
+        </CartContainer>
+      </PaymentContextProvider>
+    </ShippingAddressContextProvider>
   )
 }

@@ -1,10 +1,13 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
-import { ReactNode } from 'react'
+import { ReactNode, useContext } from 'react'
 import { RadioInput } from '../../../../components/RadioInput'
+import { PaymentContext } from '../../../../contexts/PaymentContext'
 import { paymentMethods, PaymentMethodsType } from '../../../../data/payments'
 import { PaymentContainer, PaymentsList } from './styles'
 
 export function Payment() {
+  const { setNewPayment } = useContext(PaymentContext)
+
   function getPaymentMethodIcon(method: PaymentMethodsType): ReactNode {
     switch (method.name) {
       case 'Cartão de crédito':
@@ -14,6 +17,10 @@ export function Payment() {
       case 'Dinheiro':
         return <Money size={16} />
     }
+  }
+
+  function handleSetNewPayment(payment: string) {
+    setNewPayment(payment)
   }
 
   return (
@@ -39,6 +46,7 @@ export function Payment() {
               atGroup={true}
               groupName="payments"
               icon={getPaymentMethodIcon(method)}
+              onChange={() => handleSetNewPayment(method.name)}
             ></RadioInput>
           )
         })}

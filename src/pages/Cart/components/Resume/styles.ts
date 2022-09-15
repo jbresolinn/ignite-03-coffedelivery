@@ -148,3 +148,60 @@ export const RemoveButton = styled.button`
 export const ProductPrice = styled.div`
   align-self: flex-start;
 `
+
+export const PriceResume = styled.ul`
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid ${(props) => props.theme['gray-400']};
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & + li {
+      margin: 0.75rem 0 0;
+    }
+
+    span {
+      color: ${(props) => props.theme['gray-700']};
+      font-size: 0.875rem;
+      line-height: 1.3;
+
+      &:last-child {
+        font-size: 1rem;
+      }
+    }
+
+    strong {
+      font-size: 1.25rem;
+      line-height: 1.3;
+      color: ${(props) => props.theme['gray-800']};
+    }
+  }
+`
+export const ConfirmOrderButton = styled.button`
+  margin: 1.5rem 0 0;
+  width: 100%;
+  height: 2.875rem;
+  background: ${(props) => props.theme['yellow-500']};
+  color: ${(props) => props.theme.white};
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: background 0.2s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:not(:disabled):hover {
+    background: ${(props) => props.theme['yellow-900']};
+  }
+
+  &:disabled {
+    background: ${(props) => props.theme['gray-400']};
+  }
+`

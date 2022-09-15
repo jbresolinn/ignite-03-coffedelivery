@@ -16,9 +16,9 @@ export function RadioInput({
   return (
     <RadioInputContainer>
       <input
+        {...defaultProps}
         type="radio"
-        name={atGroup ? groupName : defaultProps.name}
-        id={defaultProps.id}
+        name={atGroup && groupName ? groupName : defaultProps.name}
       />
 
       {icon}

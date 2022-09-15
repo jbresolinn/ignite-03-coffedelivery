@@ -19,7 +19,7 @@ export function Header() {
   const { currentLocation, locationModalIsOpen, toggleOpenModal } =
     useContext(LocationContext)
 
-  const { totalAmount } = useContext(CartContext)
+  const { totalQuantity } = useContext(CartContext)
 
   function formatLocationLabel(location: Location) {
     const formatted =
@@ -46,7 +46,7 @@ export function Header() {
           <NavLink to="/cart">
             <CartButton type="button">
               <ShoppingCart size={22} weight="fill" />
-              <small>{totalAmount}</small>
+              <small>{totalQuantity}</small>
             </CartButton>
           </NavLink>
         </ActionsContainer>

@@ -1,9 +1,13 @@
 import { Minus, Plus, Trash } from 'phosphor-react'
 import { useContext } from 'react'
 import { CartContext, CartProduct } from '../../../../contexts/CartContext'
+import { PaymentContext } from '../../../../contexts/PaymentContext'
+import { ShippingAddressContext } from '../../../../contexts/ShippingAddressContext'
 import { formatPrice } from '../../../../utils/formatPrice'
 import {
+  ConfirmOrderButton,
   NumberInput,
+  PriceResume,
   ProductDetail,
   ProductDetailActions,
   ProductList,
@@ -14,8 +18,17 @@ import {
 } from './styles'
 
 export function Resume() {
-  const { cartProducts, updatedQuantityCart, removeProduct } =
-    useContext(CartContext)
+  const {
+    totalAmount,
+    cartProducts,
+    updatedQuantityCart,
+    removeProduct,
+    deliveryPrice,
+  } = useContext(CartContext)
+
+  const { selectPayment } = useContext(PaymentContext)
+
+  const { shippingAddress } = useContext(ShippingAddressContext)
 
   function handleDecrementQuantity(product: CartProduct) {
     updatedQuantityCart(product.id, product.quantity - 1)
@@ -28,6 +41,9 @@ export function Resume() {
   function handleRemoveProduct(product: CartProduct) {
     removeProduct(product.id)
   }
+
+  const confirmOrderButtonDisabled =
+    !shippingAddress || !shippingAddress.number || !selectPayment
 
   return (
     <ResumeContainer>
@@ -89,6 +105,25 @@ export function Resume() {
             )
           })}
         </ProductList>
+
+        <PriceResume>
+          <li>
+            <span>Total de itens</span>
+            <span>{formatPrice(totalAmount, true)}</span>
+          </li>
+          <li>
+            <span>Entrega</span>
+            <span>{formatPrice(deliveryPrice, true)}</span>
+          </li>
+          <li>
+            <strong>Total de itens</strong>
+            <strong>{formatPrice(totalAmount + deliveryPrice, true)}</strong>
+          </li>
+        </PriceResume>
+
+        <ConfirmOrderButton disabled={confirmOrderButtonDisabled}>
+          Confirmar pedido
+        </ConfirmOrderButton>
       </ResumeContent>
     </ResumeContainer>
   )
