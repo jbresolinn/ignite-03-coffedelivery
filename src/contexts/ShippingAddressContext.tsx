@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useState } from 'react'
 import { VIA_CEP_API_URL } from '../data/constants'
 
-interface ShippingAddress {
+export interface ShippingAddress {
   postalCode: string
   street: string
   district: string

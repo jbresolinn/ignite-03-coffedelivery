@@ -1,6 +1,8 @@
 import { Minus, Plus, Trash } from 'phosphor-react'
 import { useContext } from 'react'
+
 import { CartContext, CartProduct } from '../../../../contexts/CartContext'
+import { OrderContext } from '../../../../contexts/OrderContext'
 import { PaymentContext } from '../../../../contexts/PaymentContext'
 import { ShippingAddressContext } from '../../../../contexts/ShippingAddressContext'
 import { formatPrice } from '../../../../utils/formatPrice'
@@ -30,6 +32,8 @@ export function Resume() {
 
   const { shippingAddress } = useContext(ShippingAddressContext)
 
+  const { createOrder } = useContext(OrderContext)
+
   function handleDecrementQuantity(product: CartProduct) {
     updatedQuantityCart(product.id, product.quantity - 1)
   }
@@ -40,6 +44,16 @@ export function Resume() {
 
   function handleRemoveProduct(product: CartProduct) {
     removeProduct(product.id)
+  }
+
+  function handleCreateNewOrder() {
+    const newOrder = {
+      shippingAddress,
+      payment: selectPayment,
+      deliveryTime: '20min - 30min',
+    }
+
+    createOrder(newOrder)
   }
 
   const confirmOrderButtonDisabled =
@@ -121,7 +135,10 @@ export function Resume() {
           </li>
         </PriceResume>
 
-        <ConfirmOrderButton disabled={confirmOrderButtonDisabled}>
+        <ConfirmOrderButton
+          disabled={confirmOrderButtonDisabled}
+          onClick={handleCreateNewOrder}
+        >
           Confirmar pedido
         </ConfirmOrderButton>
       </ResumeContent>

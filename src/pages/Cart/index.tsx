@@ -51,10 +51,8 @@ export function Cart() {
             <FormProvider {...newAddressForm}>
               <Address />
             </FormProvider>
-
             <Payment />
           </LeftContainer>
-
           <RightContainer>
             <Resume />
           </RightContainer>
