@@ -51,8 +51,7 @@ export const LocationButton = styled.button`
 `
 
 export const CartButton = styled.button`
-  width: 2.375rem;
-  height: 2.375rem;
+  padding: 0.5rem;
   border-radius: 6px;
   background: ${(props) => props.theme['yellow-100']};
   transition: opacity 0.2s;

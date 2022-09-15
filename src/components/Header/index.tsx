@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
 import { LocationSearch } from '../Location'
@@ -20,6 +20,7 @@ export function Header() {
     useContext(LocationContext)
 
   const { totalQuantity } = useContext(CartContext)
+  const navigate = useNavigate()
 
   function formatLocationLabel(location: Location) {
     const formatted =
@@ -32,10 +33,18 @@ export function Header() {
     toggleOpenModal()
   }
 
+  function handleGoToCart() {
+    navigate('/cart')
+  }
+
+  const cartButtonDisabled = totalQuantity < 1
+
   return (
     <>
       <HeaderContainer>
-        <img src={logo} alt="coffe delivery logo" />
+        <NavLink to="/">
+          <img src={logo} alt="coffe delivery logo" />
+        </NavLink>
 
         <ActionsContainer>
           <LocationButton type="button" onClick={handleToggleLocationModal}>
@@ -43,12 +52,15 @@ export function Header() {
             {currentLocation && formatLocationLabel(currentLocation)}
             {!currentLocation && <span>Selecione um local</span>}
           </LocationButton>
-          <NavLink to="/cart">
-            <CartButton type="button">
-              <ShoppingCart size={22} weight="fill" />
-              <small>{totalQuantity}</small>
-            </CartButton>
-          </NavLink>
+
+          <CartButton
+            type="button"
+            onClick={handleGoToCart}
+            disabled={cartButtonDisabled}
+          >
+            <ShoppingCart size={22} weight="fill" />
+            <small>{totalQuantity}</small>
+          </CartButton>
         </ActionsContainer>
       </HeaderContainer>
 
