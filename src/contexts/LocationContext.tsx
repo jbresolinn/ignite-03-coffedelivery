@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
+import { IBGE_API_URL } from '../data/constants'
 
 interface LocationRegion {
   id: number
@@ -35,9 +36,6 @@ interface LocationContextProviderProps {
 
 export const LocationContext = createContext({} as LocationContextType)
 
-const ibgeAPI =
-  'https://servicodados.ibge.gov.br/api/v1/localidades/municipios?orderBy=nome'
-
 export function LocationContextProvider({
   children,
 }: LocationContextProviderProps) {
@@ -53,7 +51,7 @@ export function LocationContextProvider({
     if (storedLocationsAsJSON) {
       setLocations(JSON.parse(storedLocationsAsJSON))
     } else {
-      fetch(ibgeAPI)
+      fetch(IBGE_API_URL)
         .then((response) => response.json())
         .then((data) => {
           setLocations(data)
