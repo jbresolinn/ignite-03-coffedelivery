@@ -1,6 +1,6 @@
 <h1 align="center">
     <img alt="pomodoro-timer" title="pomodoro-timer" src=".docs/header.png" width="900px" />
-    pomodoro timer
+    coffe delivery
 </h1>
 <p align="center">
  <img alt="languages count" src="https://img.shields.io/github/languages/count/jbresolinn/ignite-03-coffedelivery?color=8047F8"/>
