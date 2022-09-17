@@ -6,6 +6,10 @@ export const PaymentContainer = styled.section`
   background: ${(props) => props.theme['gray-200']};
   border-radius: 6px;
 
+  @media ${(props) => props.theme['mobile-bp']} {
+    border-radius: 6px 40px;
+  }
+
   header {
     display: flex;
     gap: 0.5rem;
@@ -38,4 +42,8 @@ export const PaymentsList = styled.div`
   align-items: center;
   gap: 0.75rem;
   margin: 2rem 0 0;
+
+  @media ${(props) => props.theme['mobile-bp']} {
+    flex-direction: column;
+  }
 `

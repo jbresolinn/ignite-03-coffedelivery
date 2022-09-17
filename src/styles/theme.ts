@@ -24,6 +24,7 @@ export const defaultTheme = {
 
   'modal-opacity': 'rgba(0,0,0,.25)',
 
+  'mobile-small-bp': 'only screen and (max-width: 564px)',
   'mobile-bp': 'only screen and (max-width: 992px)',
   'desktop-small-bp': 'only screen and (max-width: 1200px)',
 }

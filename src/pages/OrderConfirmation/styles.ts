@@ -22,6 +22,11 @@ export const OrderConfirmationContainer = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+
+    @media ${(props) => props.theme['mobile-bp']} {
+      flex-direction: column;
+      gap: 2rem;
+    }
   }
 `
 
@@ -98,4 +103,15 @@ export const TextContainer = styled.div`
   }
 `
 
-export const IllustrationContainer = styled.div``
+export const IllustrationContainer = styled.div`
+  @media ${(props) => props.theme['mobile-bp']} {
+    max-width: 100%;
+  }
+
+  img {
+    @media ${(props) => props.theme['mobile-bp']} {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+`

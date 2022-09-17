@@ -72,6 +72,14 @@ export const Heading = styled.div`
     grid-template-columns: 0.75fr 1fr;
     grid-template-rows: auto;
     gap: 1.25rem;
+
+    @media ${(props) => props.theme['mobile-bp']} {
+      width: 100%;
+
+      &:nth-child(2n) {
+        text-align: right;
+      }
+    }
   }
 `
 

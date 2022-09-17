@@ -17,6 +17,10 @@ export const AddressContent = styled.div`
   background: ${(props) => props.theme['gray-200']};
   border-radius: 6px;
 
+  @media ${(props) => props.theme['mobile-bp']} {
+    border-radius: 6px 40px;
+  }
+
   header {
     display: flex;
     gap: 0.5rem;
