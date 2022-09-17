@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import { produce } from 'immer'
 import { Coffe } from '../data/coffes'
+import { useNavigate } from 'react-router-dom'
 
 export interface CartProduct extends Coffe {
   quantity: number
@@ -25,6 +26,8 @@ export const CartContext = createContext({} as CartContextType)
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
   const [cartProducts, setCartProducts] = useState<CartProduct[]>([])
+
+  const navigate = useNavigate()
 
   const totalQuantity = cartProducts.length ?? 0
   const deliveryPrice = 10
@@ -75,15 +78,15 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     })
 
     setCartProducts(updatedCart)
+
+    if (!updatedCart.length) {
+      navigate('/')
+    }
   }
 
   function clearCart() {
     setCartProducts([])
   }
-
-  useEffect(() => {
-    console.log(cartProducts)
-  }, [cartProducts])
 
   return (
     <CartContext.Provider
